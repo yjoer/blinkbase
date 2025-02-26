@@ -1,0 +1,19 @@
+{
+  "name": "blinkbase",
+  "type": "module",
+  "workspaces": {
+    "packages": [
+      "server",
+      "web"
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not kaios > 0",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@xcamp/config": "2026.3.6"
+  },
+  "packageManager": "yarn@4.13.0"
+}

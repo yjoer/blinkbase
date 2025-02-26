@@ -1,6 +1,13 @@
+.build/
+.gradle/
+.idea/
+.nitro/
+.output/
+.tanstack/
 node_modules/
 public/
 
 *.env
 *.gen.ts
-package-lock.json
+.yarn/install-state.gz
+yarn.lock

@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"strict": true,
+
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"paths": {
+			"@/app/*": ["./_app/*"],
+			"@/components/*": ["./_components/*"],
+			"@/lib/*": ["./_lib/*"],
+			"@/server/*": ["../server/*"],
+			"@/state/*": ["./state/*"]
+		},
+
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+
+		"jsx": "react-jsx",
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		"target": "ES2022",
+
+		"skipLibCheck": true
+	},
+	"references": [
+		{ "path": "../server" } //
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"noImplicitOverride": true,
+		"noUncheckedIndexedAccess": true,
+		"strict": true,
+
+		"module": "preserve",
+		"moduleResolution": "bundler",
+		"types": ["@rspack/core/module", "vitest/importMeta"],
+		"paths": {
+			"@/app/*": ["./_app/*"],
+			"@/lib/*": ["./_lib/*"]
+		},
+
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+
+		"lib": ["ES2024"],
+		"target": "ES2024",
+
+		"composite": true,
+
+		"skipLibCheck": true
+	}
+}

@@ -1,0 +1,17 @@
+@import '@fontsource-variable/roboto';
+@import '@fontsource-variable/noto-sans-sc';
+@import 'tailwindcss';
+
+body {
+	font-family: 'Roboto Variable', 'Noto Sans SC Variable', sans-serif;
+	font-style: normal;
+	font-optical-sizing: auto;
+}
+
+@utility shadow-r-* {
+	box-shadow: inset -1px 0 0 0 --value([*]);
+}
+
+@utility rendering-* {
+	image-rendering: --value([*]);
+}
