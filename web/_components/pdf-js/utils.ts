@@ -19,7 +19,6 @@ export function create_pdf_worker() {
 	return worker;
 }
 
-// oxlint-disable no-empty-object-type
 interface LoadDocumentOptions extends DocumentInitParameters {}
 
 export async function load_document({ url, worker }: LoadDocumentOptions) {

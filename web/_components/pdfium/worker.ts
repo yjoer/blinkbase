@@ -1,4 +1,3 @@
-// oxlint-disable unicorn/number-literal-case
 import { init } from '@embedpdf/pdfium';
 import wasm from '@embedpdf/pdfium/pdfium.wasm?url';
 import { ORPCError, os, type } from '@orpc/server';
@@ -170,7 +169,7 @@ const render_page = base
 
 	canvas.width = canvas_width;
 	canvas.height = canvas_height;
-	pdfium.FPDFBitmap_FillRect(bitmap_ptr, 0, 0, canvas_width, canvas_height, 0xff_ff_ff_ff);
+	pdfium.FPDFBitmap_FillRect(bitmap_ptr, 0, 0, canvas_width, canvas_height, 0xFF_FF_FF_FF);
 
 	pdfium.FPDF_RenderPageBitmap(
 		bitmap_ptr,

@@ -13,7 +13,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@xcamp/config": "2026.3.6"
+    "@xcamp/config": "2026.3.7"
   },
   "packageManager": "yarn@4.13.0"
 }

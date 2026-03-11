@@ -1,4 +1,3 @@
-// oxlint-disable no-empty-object-type
 import { os } from '@orpc/server';
 import { getCookie } from '@orpc/server/helpers';
 import { RequestHeadersPluginContext } from '@orpc/server/plugins';
