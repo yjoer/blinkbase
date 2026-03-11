@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { z } from 'zod';
 
 import { auth, base } from '@/app/middleware';
-import pool from '@/lib/postgresql';
+import { pool } from '@/lib/postgresql';
 
 import { UserRepository } from './user-repository';
 

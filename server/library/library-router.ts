@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { auth } from '@/app/middleware';
-import pool from '@/lib/postgresql';
+import { pool } from '@/lib/postgresql';
 
 import { LibraryRepository } from './library-repository';
 
