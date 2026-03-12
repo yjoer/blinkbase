@@ -147,10 +147,10 @@ function SignInPage() {
 							<RiMetaFill className="text-base" />
 						</button>
 					</div>
-					<div className="mt-6 text-center text-sm">
+					<div sx={styles.signup_text}>
 						Do not have an account?
 						{' '}
-						<Link className="underline underline-offset-2" to="/accounts/sign-up">
+						<Link to="/accounts/sign-up" {...stylex.props(styles.signup_link)}>
 							Sign up
 						</Link>
 					</div>
@@ -186,5 +186,15 @@ const styles = stylex.create({
 		},
 		borderRadius: 6,
 		boxShadow: `0 0 0 1px oklch(92% 0 0), ${tokens.shadow_sm}`,
+	},
+	signup_text: {
+		marginTop: 24,
+		fontSize: 14,
+		lineHeight: 1.25 / 0.875,
+		textAlign: 'center',
+	},
+	signup_link: {
+		textDecorationLine: 'underline',
+		textUnderlineOffset: '2px',
 	},
 });
