@@ -2,7 +2,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { revalidateLogic, useForm } from '@tanstack/react-form';
 import { useMutation } from '@tanstack/react-query';
-import { createFileRoute, getRouteApi, Link } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 
 import { button_styles } from '@/components/button';
 import { Spinner } from '@/components/spinner';
@@ -14,10 +14,8 @@ export const Route = createFileRoute('/accounts/sign-up')({
 	component: SignUpPage,
 });
 
-const routeApi = getRouteApi('/accounts/sign-up');
-
 function SignUpPage() {
-	const navigate = routeApi.useNavigate();
+	const navigate = Route.useNavigate();
 	const create = useMutation(orpc.users.create_user.mutationOptions());
 
 	const form = useForm({

@@ -2,7 +2,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { revalidateLogic, useForm } from '@tanstack/react-form';
 import { useMutation } from '@tanstack/react-query';
-import { createFileRoute, getRouteApi, Link } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import cookies from 'js-cookie';
 import { RiAppleFill, RiGoogleFill, RiMetaFill } from 'react-icons/ri';
 
@@ -18,10 +18,8 @@ export const Route = createFileRoute('/accounts/sign-in')({
 	component: SignInPage,
 });
 
-const routeApi = getRouteApi('/accounts/sign-in');
-
 function SignInPage() {
-	const navigate = routeApi.useNavigate();
+	const navigate = Route.useNavigate();
 
 	const createToken = useMutation(
 		orpc.users.create_token.mutationOptions({
