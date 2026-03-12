@@ -50,7 +50,7 @@ function SignInPage() {
 	});
 
 	return (
-		<div className="h-dvh overflow-auto bg-[oklch(96%_0_0)] p-8" style={{ scrollbarGutter: 'stable' }}>
+		<div sx={styles.page}>
 			<div className="mx-auto w-100 rounded-xl bg-white p-8 shadow-sm ring-1 ring-[oklch(92%_0_0)]">
 				<div sx={styles.title}>Sign in to your account</div>
 				<div sx={styles.subtitle}>Enter your email and pick up where you left off</div>
@@ -157,6 +157,13 @@ function SignInPage() {
 }
 
 const styles = stylex.create({
+	page: {
+		height: '100dvh',
+		padding: 32,
+		overflow: 'auto',
+		scrollbarGutter: 'stable',
+		backgroundColor: 'oklch(96% 0 0)',
+	},
 	title: {
 		fontSize: '1.25rem',
 		fontWeight: 700,
