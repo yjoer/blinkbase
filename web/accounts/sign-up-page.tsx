@@ -1,14 +1,15 @@
+/* eslint-disable import-x/no-extraneous-dependencies */
 import * as stylex from '@stylexjs/stylex';
-import { useForm } from '@tanstack/react-form';
+import { revalidateLogic, useForm } from '@tanstack/react-form';
 import { useMutation } from '@tanstack/react-query';
 import { createFileRoute, getRouteApi, Link } from '@tanstack/react-router';
-import { clsx } from 'clsx';
 import { z } from 'zod';
 
 import { button_styles } from '@/components/button';
 import { Spinner } from '@/components/spinner';
 import { text_input_styles } from '@/components/text-input';
 import { orpc } from '@/lib/orpc';
+import { create_user_request } from '@/server/users/user-schema';
 
 export const Route = createFileRoute('/accounts/sign-up')({
 	component: SignUpPage,
@@ -20,12 +21,19 @@ function SignUpPage() {
 	const navigate = routeApi.useNavigate();
 	const create = useMutation(orpc.users.create_user.mutationOptions());
 
-	const { Field, Subscribe, handleSubmit } = useForm({
+	const form = useForm({
 		defaultValues: {
 			first_name: '',
 			last_name: '',
 			email: '',
 			password: '',
+		},
+		validationLogic: revalidateLogic({
+			mode: 'blur',
+			modeAfterSubmission: 'change',
+		}),
+		validators: {
+			onDynamic: create_user_request,
 		},
 		onSubmit: async ({ value }) => {
 			await create.mutateAsync(value);
@@ -42,29 +50,19 @@ function SignUpPage() {
 						Welcome aboard! Just a few details to get started
 					</div>
 					<form
-						className="mt-6 flex flex-col"
+						className="flex flex-col"
 						onSubmit={(e) => {
 							e.preventDefault();
 							e.stopPropagation();
-							handleSubmit();
+							void form.handleSubmit();
 						}}>
-						<Field
-							name="first_name"
-							validators={{
-								onChange: ({ value }) => {
-									const { success, error } = schema.shape.first_name.safeParse(value);
-									if (!success) return error.errors;
-								},
-							}}>
+						<form.Field name="first_name">
 							{(field) => {
-								const { errors } = field.state.meta;
-								const error = errors.length > 0;
+								const { errors, isTouched, isValid } = field.state.meta;
 
 								return (
 									<>
-										<label
-											className={clsx('text-sm font-medium', { 'text-red-600': error })}
-											htmlFor={field.name}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
 											First Name
 										</label>
 										<input
@@ -75,7 +73,7 @@ function SignUpPage() {
 											onChange={e => field.handleChange(e.target.value)}
 											{...stylex.props(text_input_styles.base)}
 										/>
-										{!!error && (
+										{!!isTouched && !isValid && (
 											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
 												{errors[0]?.message}
 											</div>
@@ -83,24 +81,14 @@ function SignUpPage() {
 									</>
 								);
 							}}
-						</Field>
-						<Field
-							name="last_name"
-							validators={{
-								onChange: ({ value }) => {
-									const { success, error } = schema.shape.last_name.safeParse(value);
-									if (!success) return error.errors;
-								},
-							}}>
+						</form.Field>
+						<form.Field name="last_name">
 							{(field) => {
-								const { errors } = field.state.meta;
-								const error = errors.length > 0;
+								const { errors, isTouched, isValid } = field.state.meta;
 
 								return (
 									<>
-										<label
-											className={clsx('mt-6 text-sm font-medium', { 'text-red-600': error })}
-											htmlFor={field.name}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
 											Last Name
 										</label>
 										<input
@@ -111,32 +99,22 @@ function SignUpPage() {
 											onChange={e => field.handleChange(e.target.value)}
 											{...stylex.props(text_input_styles.base)}
 										/>
-										{!!error && (
+										{!!isTouched && !isValid && (
 											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
-												{field.state.meta.errors[0]?.message}
+												{errors[0]?.message}
 											</div>
 										)}
 									</>
 								);
 							}}
-						</Field>
-						<Field
-							name="email"
-							validators={{
-								onChange: ({ value }) => {
-									const { success, error } = schema.shape.email.safeParse(value);
-									if (!success) return error.errors;
-								},
-							}}>
+						</form.Field>
+						<form.Field name="email">
 							{(field) => {
-								const { errors } = field.state.meta;
-								const error = errors.length > 0;
+								const { errors, isTouched, isValid } = field.state.meta;
 
 								return (
 									<>
-										<label
-											className={clsx('mt-6 text-sm font-medium', { 'text-red-600': error })}
-											htmlFor={field.name}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
 											Email
 										</label>
 										<input
@@ -149,32 +127,22 @@ function SignUpPage() {
 											onChange={e => field.handleChange(e.target.value)}
 											{...stylex.props(text_input_styles.base)}
 										/>
-										{!!error && (
+										{!!isTouched && !isValid && (
 											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
-												{field.state.meta.errors[0]?.message}
+												{errors[0]?.message}
 											</div>
 										)}
 									</>
 								);
 							}}
-						</Field>
-						<Field
-							name="password"
-							validators={{
-								onChange: ({ value }) => {
-									const { success, error } = schema.shape.password.safeParse(value);
-									if (!success) return error.errors;
-								},
-							}}>
+						</form.Field>
+						<form.Field name="password">
 							{(field) => {
-								const { errors } = field.state.meta;
-								const error = errors.length > 0;
+								const { errors, isTouched, isValid } = field.state.meta;
 
 								return (
 									<>
-										<label
-											className={clsx('mt-6 text-sm font-medium', { 'text-red-600': error })}
-											htmlFor={field.name}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
 											Password
 										</label>
 										<input
@@ -187,26 +155,24 @@ function SignUpPage() {
 											onChange={e => field.handleChange(e.target.value)}
 											{...stylex.props(text_input_styles.base)}
 										/>
-										{!!error && (
+										{!!isTouched && !isValid && (
 											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
-												{field.state.meta.errors[0]?.message}
+												{errors[0]?.message}
 											</div>
 										)}
 									</>
 								);
 							}}
-						</Field>
-						<Subscribe selector={state => state.isSubmitting}>
+						</form.Field>
+						<form.Subscribe selector={state => state.isSubmitting}>
 							{(isSubmitting) => {
 								return (
-									<button
-										type="submit"
-										{...stylex.props(button_styles.base, styles.sign_up_button)}>
+									<button sx={[button_styles.base, styles.sign_up_button]} type="submit">
 										{isSubmitting ? <Spinner className="size-5 animate-spin" /> : 'Sign Up'}
 									</button>
 								);
 							}}
-						</Subscribe>
+						</form.Subscribe>
 					</form>
 					<div className="mt-6 text-center text-sm">
 						Already have an account?
@@ -222,18 +188,16 @@ function SignUpPage() {
 }
 
 const styles = stylex.create({
+	input_label: {
+		marginTop: 24,
+		fontSize: 14,
+		fontWeight: 500,
+		lineHeight: 1.25 / 0.875,
+	},
+	input_error: {
+		color: 'oklch(57.7% 0.245 27.325)',
+	},
 	sign_up_button: {
 		marginTop: 24,
 	},
-});
-
-const schema = z.object({
-	first_name: z.string().nonempty('We\'d love to call you something besides "Hey!"'),
-	last_name: z.string().nonempty('A last name would be the cherry on top!'),
-	email: z.email("This doesn't look like a valid email address"),
-	password: z
-	.string()
-	.min(8, 'Passwords must have at least 8 characters')
-	.max(72, "Passwords can't be longer than 72 characters")
-	.regex(/^[ -~]+$/, 'Passwords must contain only printable ASCII characters'),
 });

@@ -58,7 +58,7 @@ function SignInPage() {
 						Enter your email and pick up where you left off
 					</div>
 					<form
-						className="mt-6 flex flex-col"
+						className="flex flex-col"
 						onSubmit={(e) => {
 							e.preventDefault();
 							e.stopPropagation();
