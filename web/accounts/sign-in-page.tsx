@@ -1,12 +1,10 @@
 /* eslint-disable import-x/no-extraneous-dependencies */
 import * as stylex from '@stylexjs/stylex';
-import { useForm } from '@tanstack/react-form';
+import { revalidateLogic, useForm } from '@tanstack/react-form';
 import { useMutation } from '@tanstack/react-query';
 import { createFileRoute, getRouteApi, Link } from '@tanstack/react-router';
-import { clsx } from 'clsx';
 import cookies from 'js-cookie';
 import { RiAppleFill, RiGoogleFill, RiMetaFill } from 'react-icons/ri';
-import { z } from 'zod';
 
 import { button_styles } from '@/components/button';
 import { Spinner } from '@/components/spinner';
@@ -34,10 +32,17 @@ function SignInPage() {
 		}),
 	);
 
-	const { Field, Subscribe, handleSubmit } = useForm({
+	const form = useForm({
 		defaultValues: {
 			email: '',
 			password: '',
+		},
+		validationLogic: revalidateLogic({
+			mode: 'blur',
+			modeAfterSubmission: 'change',
+		}),
+		validators: {
+			onDynamic: create_token_request,
 		},
 		onSubmit: async ({ value }) => {
 			await createToken.mutateAsync(value);
@@ -57,38 +62,28 @@ function SignInPage() {
 						onSubmit={(e) => {
 							e.preventDefault();
 							e.stopPropagation();
-							handleSubmit();
+							void form.handleSubmit();
 						}}>
-						<Field
-							name="email"
-							validators={{
-								onChange: ({ value }) => {
-									const { success, error } = create_token_request.shape.email.safeParse(value);
-									if (!success) return error.errors;
-								},
-							}}>
+						<form.Field name="email">
 							{(field) => {
-								const { errors } = field.state.meta;
-								const error = errors.length > 0;
+								const { errors, isTouched, isValid } = field.state.meta;
 
 								return (
 									<>
-										<label
-											className={clsx('text-sm font-medium', { 'text-red-600': error })}
-											htmlFor={field.name}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
 											Email
 										</label>
 										<input
 											name={field.name}
 											id={field.name}
 											placeholder="example@mail.com"
+											sx={text_input_styles.base}
 											type="email"
 											value={field.state.value}
 											onBlur={field.handleBlur}
 											onChange={e => field.handleChange(e.target.value)}
-											{...stylex.props(text_input_styles.base)}
 										/>
-										{!!error && (
+										{!!isTouched && !isValid && (
 											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
 												{errors[0]?.message}
 											</div>
@@ -96,37 +91,27 @@ function SignInPage() {
 									</>
 								);
 							}}
-						</Field>
-						<Field
-							name="password"
-							validators={{
-								onChange: ({ value }) => {
-									const { success, error } = create_token_request.shape.password.safeParse(value);
-									if (!success) return error.errors;
-								},
-							}}>
+						</form.Field>
+						<form.Field name="password">
 							{(field) => {
-								const { errors } = field.state.meta;
-								const error = errors.length > 0;
+								const { errors, isTouched, isValid } = field.state.meta;
 
 								return (
 									<>
-										<label
-											className={clsx('mt-6 text-sm font-medium', { 'text-red-600': error })}
-											htmlFor={field.name}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
 											Password
 										</label>
 										<input
 											name={field.name}
 											id={field.name}
 											placeholder="••••••••"
+											sx={text_input_styles.base}
 											type="password"
 											value={field.state.value}
 											onBlur={field.handleBlur}
 											onChange={e => field.handleChange(e.target.value)}
-											{...stylex.props(text_input_styles.base)}
 										/>
-										{!!error && (
+										{!!isTouched && !isValid && (
 											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
 												{errors[0]?.message}
 											</div>
@@ -134,18 +119,16 @@ function SignInPage() {
 									</>
 								);
 							}}
-						</Field>
-						<Subscribe selector={state => state.isSubmitting}>
+						</form.Field>
+						<form.Subscribe selector={state => state.isSubmitting}>
 							{(isSubmitting) => {
 								return (
-									<button
-										type="submit"
-										{...stylex.props(button_styles.base, styles.sign_in_button)}>
+									<button sx={[button_styles.base, styles.sign_in_button]} type="submit">
 										{isSubmitting ? <Spinner className="size-5 animate-spin" /> : 'Sign In'}
 									</button>
 								);
 							}}
-						</Subscribe>
+						</form.Subscribe>
 					</form>
 					<div className="relative mt-6 text-center">
 						<div className="absolute inset-x-0 top-[50%] border-t border-[oklch(92%_0_0)]" />
@@ -154,13 +137,13 @@ function SignInPage() {
 						</span>
 					</div>
 					<div className="mt-6 flex gap-4">
-						<button type="button" {...stylex.props(styles.sso_button)}>
+						<button sx={styles.sso_button} type="button">
 							<RiAppleFill className="text-base" />
 						</button>
-						<button type="button" {...stylex.props(styles.sso_button)}>
+						<button sx={styles.sso_button} type="button">
 							<RiGoogleFill className="text-base" />
 						</button>
-						<button type="button" {...stylex.props(styles.sso_button)}>
+						<button sx={styles.sso_button} type="button">
 							<RiMetaFill className="text-base" />
 						</button>
 					</div>
@@ -178,6 +161,15 @@ function SignInPage() {
 }
 
 const styles = stylex.create({
+	input_label: {
+		marginTop: 24,
+		fontSize: 14,
+		fontWeight: 500,
+		lineHeight: 1.25 / 0.875,
+	},
+	input_error: {
+		color: 'oklch(57.7% 0.245 27.325)',
+	},
 	sign_in_button: {
 		marginTop: 24,
 	},
@@ -196,4 +188,3 @@ const styles = stylex.create({
 		boxShadow: `0 0 0 1px oklch(92% 0 0), ${tokens.shadow_sm}`,
 	},
 });
-
