@@ -55,7 +55,7 @@ function SignInPage() {
 				<div sx={styles.title}>Sign in to your account</div>
 				<div sx={styles.subtitle}>Enter your email and pick up where you left off</div>
 				<form
-					className="flex flex-col"
+					sx={styles.form}
 					onSubmit={(e) => {
 						e.preventDefault();
 						e.stopPropagation();
@@ -144,10 +144,10 @@ function SignInPage() {
 						<RiMetaFill {...stylex.props(styles.sso_button_icon)} />
 					</button>
 				</div>
-				<div sx={styles.signup_text}>
+				<div sx={styles.sign_up_text}>
 					Do not have an account?
 					{' '}
-					<Link to="/accounts/sign-up" {...stylex.props(styles.signup_link)}>
+					<Link to="/accounts/sign-up" {...stylex.props(styles.sign_up_link)}>
 						Sign up
 					</Link>
 				</div>
@@ -168,6 +168,10 @@ const styles = stylex.create({
 		lineHeight: 1.25 / 0.875,
 		color: 'oklch(56% 0 0)',
 	},
+	form: {
+		display: 'flex',
+		flexDirection: 'column',
+	},
 	input_label: {
 		marginTop: 24,
 		fontSize: '0.875rem',
@@ -180,7 +184,6 @@ const styles = stylex.create({
 	input_error_text: {
 		marginTop: 8,
 		fontSize: '0.8125rem',
-		fontWeight: 500,
 		color: 'oklch(57.7% 0.245 27.325)',
 	},
 	sign_in_button: {
@@ -209,13 +212,13 @@ const styles = stylex.create({
 		fontSize: '1rem',
 		lineHeight: 1,
 	},
-	signup_text: {
+	sign_up_text: {
 		marginTop: 24,
 		fontSize: 14,
 		lineHeight: 1.25 / 0.875,
 		textAlign: 'center',
 	},
-	signup_link: {
+	sign_up_link: {
 		textDecorationLine: 'underline',
 		textUnderlineOffset: '2px',
 	},

@@ -43,12 +43,10 @@ function SignUpPage() {
 	return (
 		<div className="h-dvh overflow-auto bg-[oklch(96%_0_0)] p-8" style={{ scrollbarGutter: 'stable' }}>
 			<div className="mx-auto w-100 rounded-xl bg-white p-8 shadow-sm ring-1 ring-[oklch(92%_0_0)]">
-				<div className="text-xl font-bold">Create an account</div>
-				<div className="mt-2 text-sm text-[oklch(56%_0_0)]">
-					Welcome aboard! Just a few details to get started
-				</div>
+				<div sx={styles.title}>Create an account</div>
+				<div sx={styles.subtitle}>Welcome aboard! Just a few details to get started</div>
 				<form
-					className="flex flex-col"
+					sx={styles.form}
 					onSubmit={(e) => {
 						e.preventDefault();
 						e.stopPropagation();
@@ -66,13 +64,13 @@ function SignUpPage() {
 									<input
 										name={field.name}
 										id={field.name}
+										sx={text_input_styles.base}
 										value={field.state.value}
 										onBlur={field.handleBlur}
 										onChange={e => field.handleChange(e.target.value)}
-										{...stylex.props(text_input_styles.base)}
 									/>
 									{!!isTouched && !isValid && (
-										<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+										<div sx={styles.input_error_text}>
 											{errors[0]?.message}
 										</div>
 									)}
@@ -92,13 +90,13 @@ function SignUpPage() {
 									<input
 										name={field.name}
 										id={field.name}
+										sx={text_input_styles.base}
 										value={field.state.value}
 										onBlur={field.handleBlur}
 										onChange={e => field.handleChange(e.target.value)}
-										{...stylex.props(text_input_styles.base)}
 									/>
 									{!!isTouched && !isValid && (
-										<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+										<div sx={styles.input_error_text}>
 											{errors[0]?.message}
 										</div>
 									)}
@@ -119,14 +117,14 @@ function SignUpPage() {
 										name={field.name}
 										id={field.name}
 										placeholder="example@mail.com"
+										sx={text_input_styles.base}
 										type="email"
 										value={field.state.value}
 										onBlur={field.handleBlur}
 										onChange={e => field.handleChange(e.target.value)}
-										{...stylex.props(text_input_styles.base)}
 									/>
 									{!!isTouched && !isValid && (
-										<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+										<div sx={styles.input_error_text}>
 											{errors[0]?.message}
 										</div>
 									)}
@@ -147,14 +145,14 @@ function SignUpPage() {
 										name={field.name}
 										id={field.name}
 										placeholder="••••••••"
+										sx={text_input_styles.base}
 										type="password"
 										value={field.state.value}
 										onBlur={field.handleBlur}
 										onChange={e => field.handleChange(e.target.value)}
-										{...stylex.props(text_input_styles.base)}
 									/>
 									{!!isTouched && !isValid && (
-										<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+										<div sx={styles.input_error_text}>
 											{errors[0]?.message}
 										</div>
 									)}
@@ -172,10 +170,10 @@ function SignUpPage() {
 						}}
 					</form.Subscribe>
 				</form>
-				<div className="mt-6 text-center text-sm">
+				<div sx={styles.sign_in_text}>
 					Already have an account?
 					{' '}
-					<Link className="underline underline-offset-2" to="/accounts/sign-in">
+					<Link to="/accounts/sign-in" {...stylex.props(styles.sign_in_link)}>
 						Sign in
 					</Link>
 				</div>
@@ -185,6 +183,21 @@ function SignUpPage() {
 }
 
 const styles = stylex.create({
+	title: {
+		fontSize: '1.25rem',
+		fontWeight: 700,
+		lineHeight: 1.75 / 1.25,
+	},
+	subtitle: {
+		marginTop: 8,
+		fontSize: '0.875rem',
+		lineHeight: 1.25 / 0.875,
+		color: 'oklch(56% 0 0)',
+	},
+	form: {
+		display: 'flex',
+		flexDirection: 'column',
+	},
 	input_label: {
 		marginTop: 24,
 		fontSize: 14,
@@ -194,7 +207,22 @@ const styles = stylex.create({
 	input_label_error: {
 		color: 'oklch(57.7% 0.245 27.325)',
 	},
+	input_error_text: {
+		marginTop: 8,
+		fontSize: '0.8125rem',
+		color: 'oklch(57.7% 0.245 27.325)',
+	},
 	sign_up_button: {
 		marginTop: 24,
+	},
+	sign_in_text: {
+		marginTop: 24,
+		fontSize: 14,
+		lineHeight: 1.25 / 0.875,
+		textAlign: 'center',
+	},
+	sign_in_link: {
+		textDecorationLine: 'underline',
+		textUnderlineOffset: '2px',
 	},
 });
