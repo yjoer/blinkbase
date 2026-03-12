@@ -127,11 +127,9 @@ function SignInPage() {
 						}}
 					</form.Subscribe>
 				</form>
-				<div className="relative mt-6 text-center">
-					<div className="absolute inset-x-0 top-[50%] border-t border-[oklch(92%_0_0)]" />
-					<span className="relative bg-white px-2 text-sm text-[oklch(56%_0_0)]">
-						Or continue with
-					</span>
+				<div sx={styles.sso_divider}>
+					<div sx={styles.sso_divider_line} />
+					<span sx={styles.sso_divider_text}>Or continue with</span>
 				</div>
 				<div sx={styles.sso_button_group}>
 					<button sx={styles.sso_button} type="button">
@@ -195,6 +193,27 @@ const styles = stylex.create({
 	},
 	sign_in_button: {
 		marginTop: 24,
+	},
+	sso_divider: {
+		position: 'relative',
+		marginTop: 24,
+		textAlign: 'center',
+	},
+	sso_divider_line: {
+		position: 'absolute',
+		insetInline: 0,
+		top: '50%',
+		borderTopColor: 'oklch(92% 0 0)',
+		borderTopStyle: 'solid',
+		borderTopWidth: 1,
+	},
+	sso_divider_text: {
+		position: 'relative',
+		paddingInline: 8,
+		fontSize: '0.875rem',
+		lineHeight: 1.25 / 0.875,
+		color: 'oklch(56% 0 0)',
+		backgroundColor: '#fff',
 	},
 	sso_button_group: {
 		display: 'flex',
