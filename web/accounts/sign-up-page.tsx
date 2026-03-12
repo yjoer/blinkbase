@@ -61,7 +61,7 @@ function SignUpPage() {
 
 								return (
 									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
 											First Name
 										</label>
 										<input
@@ -87,7 +87,7 @@ function SignUpPage() {
 
 								return (
 									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
 											Last Name
 										</label>
 										<input
@@ -113,7 +113,7 @@ function SignUpPage() {
 
 								return (
 									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
 											Email
 										</label>
 										<input
@@ -141,7 +141,7 @@ function SignUpPage() {
 
 								return (
 									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
 											Password
 										</label>
 										<input
@@ -193,7 +193,7 @@ const styles = stylex.create({
 		fontWeight: 500,
 		lineHeight: 1.25 / 0.875,
 	},
-	input_error: {
+	input_label_error: {
 		color: 'oklch(57.7% 0.245 27.325)',
 	},
 	sign_up_button: {

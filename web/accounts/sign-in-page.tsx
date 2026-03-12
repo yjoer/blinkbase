@@ -70,7 +70,7 @@ function SignInPage() {
 
 								return (
 									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
 											Email
 										</label>
 										<input
@@ -84,7 +84,7 @@ function SignInPage() {
 											onChange={e => field.handleChange(e.target.value)}
 										/>
 										{!!isTouched && !isValid && (
-											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+											<div sx={styles.input_error_text}>
 												{errors[0]?.message}
 											</div>
 										)}
@@ -98,7 +98,7 @@ function SignInPage() {
 
 								return (
 									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_error]}>
+										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
 											Password
 										</label>
 										<input
@@ -112,7 +112,7 @@ function SignInPage() {
 											onChange={e => field.handleChange(e.target.value)}
 										/>
 										{!!isTouched && !isValid && (
-											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+											<div sx={styles.input_error_text}>
 												{errors[0]?.message}
 											</div>
 										)}
@@ -138,13 +138,13 @@ function SignInPage() {
 					</div>
 					<div className="mt-6 flex gap-4">
 						<button sx={styles.sso_button} type="button">
-							<RiAppleFill className="text-base" />
+							<RiAppleFill {...stylex.props(styles.sso_button_icon)} />
 						</button>
 						<button sx={styles.sso_button} type="button">
-							<RiGoogleFill className="text-base" />
+							<RiGoogleFill {...stylex.props(styles.sso_button_icon)} />
 						</button>
 						<button sx={styles.sso_button} type="button">
-							<RiMetaFill className="text-base" />
+							<RiMetaFill {...stylex.props(styles.sso_button_icon)} />
 						</button>
 					</div>
 					<div sx={styles.signup_text}>
@@ -163,11 +163,17 @@ function SignInPage() {
 const styles = stylex.create({
 	input_label: {
 		marginTop: 24,
-		fontSize: 14,
+		fontSize: '0.875rem',
 		fontWeight: 500,
 		lineHeight: 1.25 / 0.875,
 	},
-	input_error: {
+	input_label_error: {
+		color: 'oklch(57.7% 0.245 27.325)',
+	},
+	input_error_text: {
+		marginTop: 8,
+		fontSize: '0.8125rem',
+		fontWeight: 500,
 		color: 'oklch(57.7% 0.245 27.325)',
 	},
 	sign_in_button: {
@@ -186,6 +192,10 @@ const styles = stylex.create({
 		},
 		borderRadius: 6,
 		boxShadow: `0 0 0 1px oklch(92% 0 0), ${tokens.shadow_sm}`,
+	},
+	sso_button_icon: {
+		fontSize: '1rem',
+		lineHeight: 1,
 	},
 	signup_text: {
 		marginTop: 24,
