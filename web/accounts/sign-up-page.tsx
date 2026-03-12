@@ -41,8 +41,8 @@ function SignUpPage() {
 	});
 
 	return (
-		<div className="h-dvh overflow-auto" style={{ scrollbarGutter: 'stable' }}>
-			<div className="flex min-h-dvh flex-col items-center bg-[oklch(96%_0_0)] p-8">
+		<div className="h-dvh overflow-auto bg-[oklch(96%_0_0)]" style={{ scrollbarGutter: 'stable' }}>
+			<div className="flex flex-col items-center p-8">
 				<div className="w-100 rounded-xl bg-white p-8 shadow-sm ring-1 ring-[oklch(92%_0_0)]">
 					<div className="text-xl font-bold">Create an account</div>
 					<div className="mt-2 text-sm text-[oklch(56%_0_0)]">
