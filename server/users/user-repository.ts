@@ -1,3 +1,4 @@
+import type { CreateUserRequest } from './user-schema';
 import type { Pool, PoolClient } from 'pg';
 
 export class UserRepository {
@@ -7,14 +8,14 @@ export class UserRepository {
 		this.pg = pg;
 	}
 
-	find_by_id(userId: string) {
+	find_by_id(user_id: string) {
 		const query = `
 		select user_id, first_name, last_name, email_address
 		from users
 		where user_id = $1
 		`;
 
-		return this.pg.query(query, [userId]);
+		return this.pg.query<UserRow>(query, [user_id]);
 	}
 
 	find_by_email(email: string) {
@@ -24,10 +25,10 @@ export class UserRepository {
 		where email_address = $1
 		`;
 
-		return this.pg.query(query, [email]);
+		return this.pg.query<UserWithPasswordRow>(query, [email]);
 	}
 
-	create({ first_name, last_name, email, password }: CreateUserParams) {
+	create({ first_name, last_name, email, password }: CreateUserRequest) {
 		const query = `
 		insert into users (first_name, last_name, email_address, password)
 		values ($1, $2, $3, $4)
@@ -37,12 +38,20 @@ export class UserRepository {
 	}
 }
 
-interface CreateUserParams {
-	email: string;
+export type UserRow = {
+	user_id: string;
 	first_name: string;
 	last_name: string;
+	email_address: string;
+};
+
+type UserWithPasswordRow = {
+	user_id: string;
+	first_name: string;
+	last_name: string;
+	email_address: string;
 	password: string;
-}
+};
 
 if (import.meta.vitest) {
 	const { it, expect, beforeAll, afterAll } = import.meta.vitest;
@@ -52,7 +61,7 @@ if (import.meta.vitest) {
 	let users: UserRepository;
 
 	beforeAll(async () => {
-		({ default: pool } = await import('@/lib/postgresql'));
+		({ pool } = await import('@/lib/postgresql'));
 		client = await pool.connect();
 		users = new UserRepository(client);
 	});

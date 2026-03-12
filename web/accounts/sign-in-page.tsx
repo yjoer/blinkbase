@@ -1,3 +1,4 @@
+/* eslint-disable import-x/no-extraneous-dependencies */
 import * as stylex from '@stylexjs/stylex';
 import { useForm } from '@tanstack/react-form';
 import { useMutation } from '@tanstack/react-query';
@@ -11,6 +12,7 @@ import { button_styles } from '@/components/button';
 import { Spinner } from '@/components/spinner';
 import { text_input_styles } from '@/components/text-input';
 import { orpc } from '@/lib/orpc';
+import { create_token_request } from '@/server/users/user-schema';
 
 import { tokens } from '../_app/tokens.stylex';
 
@@ -61,7 +63,7 @@ function SignInPage() {
 							name="email"
 							validators={{
 								onChange: ({ value }) => {
-									const { success, error } = schema.shape.email.safeParse(value);
+									const { success, error } = create_token_request.shape.email.safeParse(value);
 									if (!success) return error.errors;
 								},
 							}}>
@@ -99,7 +101,7 @@ function SignInPage() {
 							name="password"
 							validators={{
 								onChange: ({ value }) => {
-									const { success, error } = schema.shape.password.safeParse(value);
+									const { success, error } = create_token_request.shape.password.safeParse(value);
 									if (!success) return error.errors;
 								},
 							}}>
@@ -195,11 +197,3 @@ const styles = stylex.create({
 	},
 });
 
-const schema = z.object({
-	email: z.email("This doesn't look like a valid email address"),
-	password: z
-	.string()
-	.min(8, 'Passwords must have at least 8 characters')
-	.max(72, "Passwords can't be longer than 72 characters")
-	.regex(/^[ -~]+$/, 'Passwords must contain only printable ASCII characters'),
-});

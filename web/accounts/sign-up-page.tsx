@@ -18,7 +18,7 @@ const routeApi = getRouteApi('/accounts/sign-up');
 
 function SignUpPage() {
 	const navigate = routeApi.useNavigate();
-	const create = useMutation(orpc.users.create.mutationOptions());
+	const create = useMutation(orpc.users.create_user.mutationOptions());
 
 	const { Field, Subscribe, handleSubmit } = useForm({
 		defaultValues: {
