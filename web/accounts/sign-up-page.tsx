@@ -41,145 +41,143 @@ function SignUpPage() {
 	});
 
 	return (
-		<div className="h-dvh overflow-auto bg-[oklch(96%_0_0)]" style={{ scrollbarGutter: 'stable' }}>
-			<div className="flex flex-col items-center p-8">
-				<div className="w-100 rounded-xl bg-white p-8 shadow-sm ring-1 ring-[oklch(92%_0_0)]">
-					<div className="text-xl font-bold">Create an account</div>
-					<div className="mt-2 text-sm text-[oklch(56%_0_0)]">
-						Welcome aboard! Just a few details to get started
-					</div>
-					<form
-						className="flex flex-col"
-						onSubmit={(e) => {
-							e.preventDefault();
-							e.stopPropagation();
-							void form.handleSubmit();
-						}}>
-						<form.Field name="first_name">
-							{(field) => {
-								const { errors, isTouched, isValid } = field.state.meta;
+		<div className="h-dvh overflow-auto bg-[oklch(96%_0_0)] p-8" style={{ scrollbarGutter: 'stable' }}>
+			<div className="mx-auto w-100 rounded-xl bg-white p-8 shadow-sm ring-1 ring-[oklch(92%_0_0)]">
+				<div className="text-xl font-bold">Create an account</div>
+				<div className="mt-2 text-sm text-[oklch(56%_0_0)]">
+					Welcome aboard! Just a few details to get started
+				</div>
+				<form
+					className="flex flex-col"
+					onSubmit={(e) => {
+						e.preventDefault();
+						e.stopPropagation();
+						void form.handleSubmit();
+					}}>
+					<form.Field name="first_name">
+						{(field) => {
+							const { errors, isTouched, isValid } = field.state.meta;
 
-								return (
-									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
-											First Name
-										</label>
-										<input
-											name={field.name}
-											id={field.name}
-											value={field.state.value}
-											onBlur={field.handleBlur}
-											onChange={e => field.handleChange(e.target.value)}
-											{...stylex.props(text_input_styles.base)}
-										/>
-										{!!isTouched && !isValid && (
-											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
-												{errors[0]?.message}
-											</div>
-										)}
-									</>
-								);
-							}}
-						</form.Field>
-						<form.Field name="last_name">
-							{(field) => {
-								const { errors, isTouched, isValid } = field.state.meta;
+							return (
+								<>
+									<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
+										First Name
+									</label>
+									<input
+										name={field.name}
+										id={field.name}
+										value={field.state.value}
+										onBlur={field.handleBlur}
+										onChange={e => field.handleChange(e.target.value)}
+										{...stylex.props(text_input_styles.base)}
+									/>
+									{!!isTouched && !isValid && (
+										<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+											{errors[0]?.message}
+										</div>
+									)}
+								</>
+							);
+						}}
+					</form.Field>
+					<form.Field name="last_name">
+						{(field) => {
+							const { errors, isTouched, isValid } = field.state.meta;
 
-								return (
-									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
-											Last Name
-										</label>
-										<input
-											name={field.name}
-											id={field.name}
-											value={field.state.value}
-											onBlur={field.handleBlur}
-											onChange={e => field.handleChange(e.target.value)}
-											{...stylex.props(text_input_styles.base)}
-										/>
-										{!!isTouched && !isValid && (
-											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
-												{errors[0]?.message}
-											</div>
-										)}
-									</>
-								);
-							}}
-						</form.Field>
-						<form.Field name="email">
-							{(field) => {
-								const { errors, isTouched, isValid } = field.state.meta;
+							return (
+								<>
+									<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
+										Last Name
+									</label>
+									<input
+										name={field.name}
+										id={field.name}
+										value={field.state.value}
+										onBlur={field.handleBlur}
+										onChange={e => field.handleChange(e.target.value)}
+										{...stylex.props(text_input_styles.base)}
+									/>
+									{!!isTouched && !isValid && (
+										<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+											{errors[0]?.message}
+										</div>
+									)}
+								</>
+							);
+						}}
+					</form.Field>
+					<form.Field name="email">
+						{(field) => {
+							const { errors, isTouched, isValid } = field.state.meta;
 
-								return (
-									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
-											Email
-										</label>
-										<input
-											name={field.name}
-											id={field.name}
-											placeholder="example@mail.com"
-											type="email"
-											value={field.state.value}
-											onBlur={field.handleBlur}
-											onChange={e => field.handleChange(e.target.value)}
-											{...stylex.props(text_input_styles.base)}
-										/>
-										{!!isTouched && !isValid && (
-											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
-												{errors[0]?.message}
-											</div>
-										)}
-									</>
-								);
-							}}
-						</form.Field>
-						<form.Field name="password">
-							{(field) => {
-								const { errors, isTouched, isValid } = field.state.meta;
+							return (
+								<>
+									<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
+										Email
+									</label>
+									<input
+										name={field.name}
+										id={field.name}
+										placeholder="example@mail.com"
+										type="email"
+										value={field.state.value}
+										onBlur={field.handleBlur}
+										onChange={e => field.handleChange(e.target.value)}
+										{...stylex.props(text_input_styles.base)}
+									/>
+									{!!isTouched && !isValid && (
+										<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+											{errors[0]?.message}
+										</div>
+									)}
+								</>
+							);
+						}}
+					</form.Field>
+					<form.Field name="password">
+						{(field) => {
+							const { errors, isTouched, isValid } = field.state.meta;
 
-								return (
-									<>
-										<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
-											Password
-										</label>
-										<input
-											name={field.name}
-											id={field.name}
-											placeholder="••••••••"
-											type="password"
-											value={field.state.value}
-											onBlur={field.handleBlur}
-											onChange={e => field.handleChange(e.target.value)}
-											{...stylex.props(text_input_styles.base)}
-										/>
-										{!!isTouched && !isValid && (
-											<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
-												{errors[0]?.message}
-											</div>
-										)}
-									</>
-								);
-							}}
-						</form.Field>
-						<form.Subscribe selector={state => state.isSubmitting}>
-							{(isSubmitting) => {
-								return (
-									<button sx={[button_styles.base, styles.sign_up_button]} type="submit">
-										{isSubmitting ? <Spinner className="size-5 animate-spin" /> : 'Sign Up'}
-									</button>
-								);
-							}}
-						</form.Subscribe>
-					</form>
-					<div className="mt-6 text-center text-sm">
-						Already have an account?
-						{' '}
-						<Link className="underline underline-offset-2" to="/accounts/sign-in">
-							Sign in
-						</Link>
-					</div>
+							return (
+								<>
+									<label htmlFor={field.name} sx={[styles.input_label, isTouched && !isValid && styles.input_label_error]}>
+										Password
+									</label>
+									<input
+										name={field.name}
+										id={field.name}
+										placeholder="••••••••"
+										type="password"
+										value={field.state.value}
+										onBlur={field.handleBlur}
+										onChange={e => field.handleChange(e.target.value)}
+										{...stylex.props(text_input_styles.base)}
+									/>
+									{!!isTouched && !isValid && (
+										<div className="mt-2 text-[0.8125rem] font-medium text-red-600">
+											{errors[0]?.message}
+										</div>
+									)}
+								</>
+							);
+						}}
+					</form.Field>
+					<form.Subscribe selector={state => state.isSubmitting}>
+						{(isSubmitting) => {
+							return (
+								<button sx={[button_styles.base, styles.sign_up_button]} type="submit">
+									{isSubmitting ? <Spinner className="size-5 animate-spin" /> : 'Sign Up'}
+								</button>
+							);
+						}}
+					</form.Subscribe>
+				</form>
+				<div className="mt-6 text-center text-sm">
+					Already have an account?
+					{' '}
+					<Link className="underline underline-offset-2" to="/accounts/sign-in">
+						Sign in
+					</Link>
 				</div>
 			</div>
 		</div>

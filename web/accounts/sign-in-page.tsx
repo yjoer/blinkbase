@@ -50,8 +50,8 @@ function SignInPage() {
 	});
 
 	return (
-		<div className="flex h-dvh flex-col items-center overflow-auto bg-[oklch(96%_0_0)]" style={{ scrollbarGutter: 'stable' }}>
-			<div className="m-8 w-100 rounded-xl bg-white p-8 shadow-sm ring-1 ring-[oklch(92%_0_0)]">
+		<div className="h-dvh overflow-auto bg-[oklch(96%_0_0)] p-8" style={{ scrollbarGutter: 'stable' }}>
+			<div className="mx-auto w-100 rounded-xl bg-white p-8 shadow-sm ring-1 ring-[oklch(92%_0_0)]">
 				<div sx={styles.title}>Sign in to your account</div>
 				<div sx={styles.subtitle}>Enter your email and pick up where you left off</div>
 				<form
