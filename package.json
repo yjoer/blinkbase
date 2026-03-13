@@ -1,19 +1,18 @@
 {
-  "name": "blinkbase",
-  "type": "module",
-  "workspaces": {
-    "packages": [
-      "server",
-      "web"
-    ]
-  },
-  "browserslist": [
-    "defaults",
-    "not kaios > 0",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "@xcamp/config": "2026.3.8"
-  },
-  "packageManager": "yarn@4.13.0"
+	"name": "blinkbase",
+	"type": "module",
+	"workspaces": [
+		"server",
+		"web"
+	],
+	"browserslist": [
+		"defaults",
+		"not kaios > 0",
+		"not op_mini all"
+	],
+	"devDependencies": {
+		"@xcamp/config": "2026.3.10",
+		"vite-plus": "0.1.11"
+	},
+	"packageManager": "yarn@4.13.0"
 }

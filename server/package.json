@@ -19,7 +19,7 @@
 		"zod": "catalog:validation"
 	},
 	"devDependencies": {
-		"@dotenvx/dotenvx": "1.54.1",
+		"@dotenvx/dotenvx": "1.55.0",
 		"@rspack/cli": "1.7.8",
 		"@rspack/core": "1.7.8",
 		"@types/bcrypt": "6.0.0",
@@ -27,7 +27,7 @@
 		"@types/pg": "8.18.0",
 		"@vitest/coverage-v8": "catalog:test",
 		"@vitest/ui": "catalog:test",
-		"@xcamp/webpack": "2026.3.1",
+		"@xcamp/webpack": "2026.3.3",
 		"cross-env": "10.1.0",
 		"ts-loader": "9.5.4",
 		"typescript": "5.9.3",

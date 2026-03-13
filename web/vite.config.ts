@@ -20,7 +20,7 @@ export const babelConfig = {
 	},
 } satisfies Parameters<typeof babel>[0];
 
-const routes = rootRoute('root.tsx', [
+export const routes = rootRoute('root.tsx', [
 	route('/accounts', [
 		route('/sign-in', '../accounts/sign-in-page.tsx'),
 		route('/sign-up', '../accounts/sign-up-page.tsx'),
