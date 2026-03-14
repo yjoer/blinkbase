@@ -19,7 +19,7 @@
 		"zod": "catalog:validation"
 	},
 	"devDependencies": {
-		"@dotenvx/dotenvx": "1.55.0",
+		"@dotenvx/dotenvx": "1.55.1",
 		"@rspack/cli": "1.7.8",
 		"@rspack/core": "1.7.8",
 		"@types/bcrypt": "6.0.0",
