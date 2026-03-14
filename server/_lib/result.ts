@@ -55,7 +55,7 @@ if (import.meta.vitest) {
 		const result1 = division(2, 0);
 		if (result1.is_err) {
 			expect(result1.error).toBeInstanceOf(Error);
-			expect(result1.error?.message).toBe('division by zero');
+			expect(result1.error.message).toBe('division by zero');
 		}
 
 		const result2 = division(2, 1);
@@ -64,7 +64,7 @@ if (import.meta.vitest) {
 	});
 
 	it('should handle async operations with both success and error cases', async () => {
-		const throwable = (enabled: boolean) => {
+		const throwable = async (enabled: boolean) => {
 			if (enabled) throw new Error('message');
 			return 1;
 		};

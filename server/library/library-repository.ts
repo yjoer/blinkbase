@@ -158,7 +158,7 @@ if (import.meta.vitest) {
 	let library: LibraryRepository;
 
 	beforeAll(async () => {
-		({ default: pool } = await import('@/lib/postgresql'));
+		({ pool } = await import('@/lib/postgresql'));
 		client = await pool.connect();
 		library = new LibraryRepository(client);
 	});
@@ -222,7 +222,7 @@ if (import.meta.vitest) {
 				children: [
 					{
 						name: 'Secondary 3',
-						children: undefined,
+						children: null,
 					},
 					{
 						name: 'Secondary 2',
@@ -250,7 +250,7 @@ if (import.meta.vitest) {
 					},
 					{
 						name: 'Secondary 3',
-						children: undefined,
+						children: null,
 					},
 				],
 			},
@@ -273,7 +273,7 @@ if (import.meta.vitest) {
 					},
 					{
 						name: 'Secondary 3',
-						children: undefined,
+						children: null,
 					},
 				],
 			},

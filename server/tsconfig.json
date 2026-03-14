@@ -6,7 +6,7 @@
 
 		"module": "preserve",
 		"moduleResolution": "bundler",
-		"types": ["@rspack/core/module", "vitest/importMeta"],
+		"types": ["@rspack/core/module", "vite-plus/test/importMeta"],
 		"paths": {
 			"@/app/*": ["./_app/*"],
 			"@/lib/*": ["./_lib/*"]
