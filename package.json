@@ -11,11 +11,11 @@
 		"not op_mini all"
 	],
 	"devDependencies": {
-		"@vitest/coverage-v8": "4.1.0",
-		"@vitest/ui": "4.1.0",
+		"@vitest/coverage-v8": "4.1.2",
+		"@vitest/ui": "4.1.2",
 		"@xcamp/config": "2026.3.10",
-		"vite-plus": "0.1.11",
-		"vitest": "4.1.0"
+		"vite-plus": "0.1.14",
+		"vitest": "4.1.2"
 	},
 	"packageManager": "yarn@4.13.0"
 }

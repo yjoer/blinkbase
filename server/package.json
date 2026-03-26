@@ -10,7 +10,7 @@
 		"test": "vitest"
 	},
 	"dependencies": {
-		"@napi-rs/canvas": "0.1.96",
+		"@napi-rs/canvas": "0.1.97",
 		"@orpc/server": "catalog:orpc",
 		"bcrypt": "6.0.0",
 		"dotenv": "17.3.1",
@@ -19,16 +19,16 @@
 		"zod": "catalog:validation"
 	},
 	"devDependencies": {
-		"@dotenvx/dotenvx": "1.55.1",
-		"@rspack/cli": "1.7.8",
-		"@rspack/core": "1.7.8",
+		"@dotenvx/dotenvx": "1.57.2",
+		"@rspack/cli": "1.7.10",
+		"@rspack/core": "1.7.10",
 		"@types/bcrypt": "6.0.0",
 		"@types/jsonwebtoken": "9.0.10",
-		"@types/pg": "8.18.0",
+		"@types/pg": "8.20.0",
 		"@xcamp/webpack": "2026.3.3",
 		"cross-env": "10.1.0",
 		"ts-loader": "9.5.4",
-		"typescript": "5.9.3",
+		"typescript": "6.0.2",
 		"webpack": "5.105.4",
 		"webpack-merge": "6.0.1"
 	}

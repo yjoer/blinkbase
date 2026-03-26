@@ -152,6 +152,7 @@ function SignInPage() {
 	);
 }
 
+// MARK: styles
 const styles = stylex.create({
 	page: {
 		height: '100dvh',
