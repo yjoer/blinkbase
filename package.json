@@ -13,7 +13,7 @@
 	"devDependencies": {
 		"@vitest/coverage-v8": "4.1.2",
 		"@vitest/ui": "4.1.2",
-		"@xcamp/config": "2026.3.10",
+		"@xcamp/config": "2026.3.11",
 		"vite-plus": "0.1.14",
 		"vitest": "4.1.2"
 	},
