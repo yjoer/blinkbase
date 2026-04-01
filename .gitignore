@@ -10,4 +10,3 @@ public/
 *.env
 *.gen.ts
 .yarn/install-state.gz
-yarn.lock
