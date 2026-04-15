@@ -231,7 +231,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@blinkbase/server@workspace:server"
   dependencies:
-    "@dotenvx/dotenvx": "npm:1.60.2"
+    "@dotenvx/dotenvx": "npm:1.61.0"
     "@napi-rs/canvas": "npm:0.1.97"
     "@orpc/server": "catalog:orpc"
     "@rspack/cli": "npm:1.7.11"
@@ -668,9 +668,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dotenvx/dotenvx@npm:1.60.2":
-  version: 1.60.2
-  resolution: "@dotenvx/dotenvx@npm:1.60.2"
+"@dotenvx/dotenvx@npm:1.61.0":
+  version: 1.61.0
+  resolution: "@dotenvx/dotenvx@npm:1.61.0"
   dependencies:
     commander: "npm:^11.1.0"
     dotenv: "npm:^17.2.1"
@@ -684,7 +684,7 @@ __metadata:
     yocto-spinner: "npm:^1.1.0"
   bin:
     dotenvx: src/cli/dotenvx.js
-  checksum: 10c0/f9c2a58ece31eda6bc59630722b6c737e3070239adec5cb449b7f3ce7860b63f2be684199396319fcc003e66c93a72cbef42ca9bca16cf5b6f7f1a90322a73d3
+  checksum: 10c0/1e5089af19f43bcc9774c6fec1c0a575bcf958f6d27f61373e580778d2b96d2110591768eeaba1258fa1b911363aacac40ccf485838024daa8423edcdeb8db91
   languageName: node
   linkType: hard
 
