@@ -10,7 +10,7 @@
 		"test": "vitest"
 	},
 	"dependencies": {
-		"@napi-rs/canvas": "0.1.97",
+		"@napi-rs/canvas": "0.1.99",
 		"@orpc/server": "catalog:orpc",
 		"bcrypt": "6.0.0",
 		"dotenv": "17.4.1",
@@ -19,7 +19,7 @@
 		"zod": "catalog:validation"
 	},
 	"devDependencies": {
-		"@dotenvx/dotenvx": "1.61.0",
+		"@dotenvx/dotenvx": "1.61.1",
 		"@rspack/cli": "1.7.11",
 		"@rspack/core": "1.7.11",
 		"@types/bcrypt": "6.0.0",
