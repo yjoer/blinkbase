@@ -13,8 +13,8 @@
 	"devDependencies": {
 		"@vitest/coverage-v8": "4.1.4",
 		"@vitest/ui": "4.1.4",
-		"@xcamp/config": "2026.4.0",
-		"vite-plus": "0.1.18",
+		"@xcamp/config": "2026.4.1",
+		"vite-plus": "0.1.19",
 		"vitest": "4.1.4"
 	},
 	"packageManager": "yarn@4.14.1"
