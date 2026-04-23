@@ -20,8 +20,8 @@
 	},
 	"devDependencies": {
 		"@dotenvx/dotenvx": "1.61.1",
-		"@rspack/cli": "1.7.11",
-		"@rspack/core": "1.7.11",
+		"@rspack/cli": "2.0.0",
+		"@rspack/core": "2.0.0",
 		"@types/bcrypt": "6.0.0",
 		"@types/jsonwebtoken": "9.0.10",
 		"@types/pg": "8.20.0",
