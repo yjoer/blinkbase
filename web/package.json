@@ -30,7 +30,7 @@
 		"clsx": "2.1.1",
 		"cva": "npm:class-variance-authority@0.7.1",
 		"date-fns": "4.1.0",
-		"es-toolkit": "1.45.1",
+		"es-toolkit": "1.46.1",
 		"js-cookie": "3.0.5",
 		"pdfjs-dist": "5.6.205",
 		"radix-ui": "1.4.3",
@@ -45,7 +45,7 @@
 		"@rolldown/plugin-babel": "0.2.3",
 		"@stylexjs/babel-plugin": "0.18.3",
 		"@stylexjs/postcss-plugin": "0.18.3",
-		"@tailwindcss/vite": "4.2.2",
+		"@tailwindcss/vite": "4.2.4",
 		"@types/babel__core": "7.20.5",
 		"@types/js-cookie": "3.0.6",
 		"@types/react": "19.2.14",
@@ -56,7 +56,7 @@
 		"fetchdts": "0.1.7",
 		"nitro": "3.0.260415-beta",
 		"postcss-load-config": "6.0.1",
-		"tailwindcss": "4.2.2",
+		"tailwindcss": "4.2.4",
 		"typescript": "6.0.3",
 		"vite": "8.0.10"
 	}
